@@ -1,17 +1,79 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager navigationManager
+@inject ISnackbarService SnackbarService
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<Layout Sider="true">
+    <LayoutSider>
+        <LayoutSiderContent>
+            <NavMenu></NavMenu>
+        </LayoutSiderContent>
+    </LayoutSider>
+    <Layout>
+        <LayoutHeader Fixed="true">
+            <Bar Breakpoint="Breakpoint.Desktop" Background="Background.Primary" ThemeContrast="ThemeContrast.Light" >
+                <BarBrand>
+                    <BarItem>
+                        <BarLink Clicked="ToggleSidebar">
+                            Blazoring PWA
+                        </BarLink>
+                    </BarItem>
+                </BarBrand>
+                <BarMenu>
+                    <BarEnd>
+                        <BarItem>
+                            <BarLink To="https://github.com/andreatosato/azure-static-app-pushnotification" Target="Target.Blank">
+                                <i class="fab fa-github text-color-primary"></i>
+                            </BarLink>
+                        </BarItem>
+                    </BarEnd>
+                </BarMenu>
+            </Bar>
+        </LayoutHeader>
+        <LayoutContent>
+            <Container Fluid="true">
+                <AutoBreadcrum></AutoBreadcrum>
+                @Body
+                <Snackbar @ref="snackbarRef">
+                    <SnackbarBody>
+                        @SnackbarMessage
+                    </SnackbarBody>
+                    <SnackbarAction Clicked="@(()=> snackbarRef.Hide())"><Icon Name="IconName.Clear"></Icon></SnackbarAction>
+                </Snackbar>
+            </Container>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
+        </LayoutContent>
+    </Layout>
+</Layout>
 
-        <div class="content px-4">
-            @Body
-        </div>
-    </div>
-</div>
+@code{
+    protected override void OnInitialized()
+    {
+        SnackbarService.OnShow += OnShow;
+    }
+
+    public void Dispose()
+    {
+        SnackbarService.OnShow -= OnShow;
+    }
+
+    public void OnShow(string message, SnackbarType type)
+    {
+        SnackbarType = type;
+        SnackbarMessage = message;
+        snackbarRef.Show();
+    }
+
+    Snackbar snackbarRef;
+    SnackbarType SnackbarType;
+    string SnackbarMessage;
+
+    string menuIcon = "menu";
+    void ToggleSidebar()
+    {
+        if (AppStore.Sidebar.Visible)
+            menuIcon = "menu";
+        else
+            menuIcon = "menu_open";
+        AppStore.Sidebar.Toggle();
+    }
+}

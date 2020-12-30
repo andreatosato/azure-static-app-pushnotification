@@ -2,6 +2,134 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Blazorise/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.props": {}
+        }
+      },
+      "Blazorise.Bootstrap/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Bootstrap.props": {}
+        }
+      },
+      "Blazorise.DataGrid/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.DataGrid.dll": {}
+        }
+      },
+      "Blazorise.Icons.Material/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Icons.Material.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Icons.Material.dll": {}
+        }
+      },
+      "Blazorise.Material/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Blazorise.Bootstrap": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Material.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Material.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Material.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Material.props": {}
+        }
+      },
+      "Blazorise.Sidebar/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Sidebar.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Sidebar.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Sidebar.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Sidebar.props": {}
+        }
+      },
+      "Blazorise.Snackbar/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Snackbar.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Snackbar.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/5.0.1": {
         "type": "package",
         "dependencies": {
@@ -33,6 +161,19 @@
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Browser/3.0.0-preview6.19307.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.0.0-preview6.19307.2",
+          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview6.19304.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll": {}
         }
       },
       "Microsoft.AspNetCore.Components.Forms/5.0.1": {
@@ -288,6 +429,19 @@
           "lib/net5.0/Microsoft.JSInterop.WebAssembly.dll": {}
         }
       },
+      "Reshiru.Blazor.IndexedDB.Framework/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Browser": "3.0.0-preview6.19307.2",
+          "TG.Blazor.IndexedDB": "0.9.0-beta"
+        },
+        "compile": {
+          "lib/netstandard2.0/Blazor.IndexedDB.Framework.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Blazor.IndexedDB.Framework.dll": {}
+        }
+      },
       "System.IO.Pipelines/5.0.1": {
         "type": "package",
         "compile": {
@@ -304,10 +458,162 @@
         },
         "runtime": {
           "lib/net5.0/System.Net.Http.Json.dll": {}
+        }
+      },
+      "TG.Blazor.IndexedDB/0.9.0-beta": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Browser": "3.0.0-preview6.19307.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/TG.Blazor.IndexedDB.dll": {},
+          "lib/netstandard2.0/TG.Blazor.IndexedDb.JS.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/TG.Blazor.IndexedDB.dll": {},
+          "lib/netstandard2.0/TG.Blazor.IndexedDb.JS.dll": {}
+        }
+      },
+      "Blazoring.PWA.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Blazoring.PWA.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Blazoring.PWA.Shared.dll": {}
         }
       }
     },
     "net5.0/browser-wasm": {
+      "Blazorise/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.props": {}
+        }
+      },
+      "Blazorise.Bootstrap/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Bootstrap.props": {}
+        }
+      },
+      "Blazorise.DataGrid/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.DataGrid.dll": {}
+        }
+      },
+      "Blazorise.Icons.Material/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Icons.Material.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Icons.Material.dll": {}
+        }
+      },
+      "Blazorise.Material/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Blazorise.Bootstrap": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Material.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Material.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Material.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Material.props": {}
+        }
+      },
+      "Blazorise.Sidebar/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Sidebar.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Sidebar.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Sidebar.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Sidebar.props": {}
+        }
+      },
+      "Blazorise.Snackbar/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Snackbar.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Snackbar.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Snackbar.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/5.0.1": {
         "type": "package",
         "dependencies": {
@@ -339,6 +645,19 @@
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Browser/3.0.0-preview6.19307.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.0.0-preview6.19307.2",
+          "Microsoft.Extensions.DependencyInjection": "3.0.0-preview6.19304.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll": {}
         }
       },
       "Microsoft.AspNetCore.Components.Forms/5.0.1": {
@@ -594,6 +913,19 @@
           "lib/net5.0/Microsoft.JSInterop.WebAssembly.dll": {}
         }
       },
+      "Reshiru.Blazor.IndexedDB.Framework/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Browser": "3.0.0-preview6.19307.2",
+          "TG.Blazor.IndexedDB": "0.9.0-beta"
+        },
+        "compile": {
+          "lib/netstandard2.0/Blazor.IndexedDB.Framework.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Blazor.IndexedDB.Framework.dll": {}
+        }
+      },
       "System.IO.Pipelines/5.0.1": {
         "type": "package",
         "compile": {
@@ -610,11 +942,168 @@
         },
         "runtime": {
           "lib/net5.0/System.Net.Http.Json.dll": {}
+        }
+      },
+      "TG.Blazor.IndexedDB/0.9.0-beta": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Browser": "3.0.0-preview6.19307.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/TG.Blazor.IndexedDB.dll": {},
+          "lib/netstandard2.0/TG.Blazor.IndexedDb.JS.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/TG.Blazor.IndexedDB.dll": {},
+          "lib/netstandard2.0/TG.Blazor.IndexedDb.JS.dll": {}
+        }
+      },
+      "Blazoring.PWA.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Blazoring.PWA.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Blazoring.PWA.Shared.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "Blazorise/0.9.2.4": {
+      "sha512": "8aWVxfNOays7UG1VpDYyePQVUKLSAT2LPKw4/r8VZE13Ijz0sxCWQt1KVmST+NGtUWT0PchbKqtlqGbAG9UwBg==",
+      "type": "package",
+      "path": "blazorise/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.0.9.2.4.nupkg.sha512",
+        "blazorise.nuspec",
+        "build/Blazorise.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.props",
+        "buildTransitive/Blazorise.props",
+        "lib/net5.0/Blazorise.dll",
+        "lib/netstandard2.1/Blazorise.dll",
+        "staticwebassets/blazorise.css",
+        "staticwebassets/blazorise.js"
+      ]
+    },
+    "Blazorise.Bootstrap/0.9.2.4": {
+      "sha512": "LF+SmTh2imnfxwFLrB0tHYwY9mYNGH3lrFWwG0B+N3Fo/qwPdwFlH5aNgckl31HnIGtIfLppaaK9cyu1qcHLpg==",
+      "type": "package",
+      "path": "blazorise.bootstrap/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.bootstrap.0.9.2.4.nupkg.sha512",
+        "blazorise.bootstrap.nuspec",
+        "build/Blazorise.Bootstrap.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Bootstrap.props",
+        "buildTransitive/Blazorise.Bootstrap.props",
+        "lib/net5.0/Blazorise.Bootstrap.dll",
+        "lib/netstandard2.1/Blazorise.Bootstrap.dll",
+        "staticwebassets/blazorise.bootstrap.css",
+        "staticwebassets/blazorise.bootstrap.js"
+      ]
+    },
+    "Blazorise.DataGrid/0.9.2.4": {
+      "sha512": "AqHu3xMzYTvYO0hEKVG90dUABhEjqA1IKMT4TSv6F1EgzdyOul5RgTXHfllS3T0t3NUbtN5orWcEmhHXQsUvkw==",
+      "type": "package",
+      "path": "blazorise.datagrid/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.datagrid.0.9.2.4.nupkg.sha512",
+        "blazorise.datagrid.nuspec",
+        "lib/net5.0/Blazorise.DataGrid.dll",
+        "lib/netstandard2.1/Blazorise.DataGrid.dll"
+      ]
+    },
+    "Blazorise.Icons.Material/0.9.2.4": {
+      "sha512": "cQ7Nf/BUPitLIBB64CDag4Okdu0jg7s8EZDgEWYgAKcnZbOvoMZu6a2a7irjDY/qLD2DfElDU92gMY+Dz4eG2Q==",
+      "type": "package",
+      "path": "blazorise.icons.material/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.icons.material.0.9.2.4.nupkg.sha512",
+        "blazorise.icons.material.nuspec",
+        "lib/net5.0/Blazorise.Icons.Material.dll",
+        "lib/netstandard2.1/Blazorise.Icons.Material.dll"
+      ]
+    },
+    "Blazorise.Material/0.9.2.4": {
+      "sha512": "aiDKVSvDLIx5ekvcbNqzXpaCibqmnQax15Nk4HkTZuX26lM4+6r0mI+vMcGJhK9gBWvu+LyZs3BXAQz5cVmYcw==",
+      "type": "package",
+      "path": "blazorise.material/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.material.0.9.2.4.nupkg.sha512",
+        "blazorise.material.nuspec",
+        "build/Blazorise.Material.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Material.props",
+        "buildTransitive/Blazorise.Material.props",
+        "lib/net5.0/Blazorise.Material.dll",
+        "lib/netstandard2.1/Blazorise.Material.dll",
+        "staticwebassets/blazorise.material.css",
+        "staticwebassets/blazorise.material.js"
+      ]
+    },
+    "Blazorise.Sidebar/0.9.2.4": {
+      "sha512": "ajB9gbprQqNATs6fCm8cFa0TK0UlvIhZzbjtereF+EaI6EF4IH7zaCRmnR+TzNNggS83igDQEyRpkEpM46O2uQ==",
+      "type": "package",
+      "path": "blazorise.sidebar/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.sidebar.0.9.2.4.nupkg.sha512",
+        "blazorise.sidebar.nuspec",
+        "build/Blazorise.Sidebar.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Sidebar.props",
+        "buildTransitive/Blazorise.Sidebar.props",
+        "lib/net5.0/Blazorise.Sidebar.dll",
+        "lib/netstandard2.1/Blazorise.Sidebar.dll",
+        "staticwebassets/blazorise.sidebar.css"
+      ]
+    },
+    "Blazorise.Snackbar/0.9.2.4": {
+      "sha512": "wu9oWjrNupB7Af9w8WoPrIwNUFibhrigLN3JlEEbOw1jxsseIUshKGhGaHTpcnE5Pz3UCO6YbDXf4HMSZZVlXA==",
+      "type": "package",
+      "path": "blazorise.snackbar/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.snackbar.0.9.2.4.nupkg.sha512",
+        "blazorise.snackbar.nuspec",
+        "build/Blazorise.Snackbar.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Snackbar.props",
+        "buildTransitive/Blazorise.Snackbar.props",
+        "lib/net5.0/Blazorise.Snackbar.dll",
+        "lib/netstandard2.1/Blazorise.Snackbar.dll",
+        "staticwebassets/blazorise.snackbar.css"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/5.0.1": {
       "sha512": "uqElO13Qq+t9BNkJWqtja3uSkFhbQ5Rej1MiJw6FOF1r77w9szQzuo75u2ddUnZUWUS2shKW9LpuKOnGuMxHGA==",
       "type": "package",
@@ -663,6 +1152,20 @@
         "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
         "microsoft.aspnetcore.components.analyzers.5.0.1.nupkg.sha512",
         "microsoft.aspnetcore.components.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Browser/3.0.0-preview6.19307.2": {
+      "sha512": "vDQU0ZJvO1kvlzDUDyqnpDaCj20ceZb3HYip+sRYvyw8F3k/OXz6op/sQdq5gaVPc6nBBBgBK3/dn9Mvl1YN1A==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.browser/3.0.0-preview6.19307.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.xml",
+        "microsoft.aspnetcore.components.browser.3.0.0-preview6.19307.2.nupkg.sha512",
+        "microsoft.aspnetcore.components.browser.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Components.Forms/5.0.1": {
@@ -1087,6 +1590,18 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
+    "Reshiru.Blazor.IndexedDB.Framework/1.0.1": {
+      "sha512": "SavHT498zxUJo6NNGIDWWItPimFP/NwJVeOzxQrBm3r5OCYMNU8TX2R7bbaTHMLLqJF7Vbbf9d5zCCyDI0hYcw==",
+      "type": "package",
+      "path": "reshiru.blazor.indexeddb.framework/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Blazor.IndexedDB.Framework.dll",
+        "reshiru.blazor.indexeddb.framework.1.0.1.nupkg.sha512",
+        "reshiru.blazor.indexeddb.framework.nuspec"
+      ]
+    },
     "System.IO.Pipelines/5.0.1": {
       "sha512": "qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
       "type": "package",
@@ -1134,12 +1649,37 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "TG.Blazor.IndexedDB/0.9.0-beta": {
+      "sha512": "xJwZnnJOCZJlHKPPMBn5zrCc5AFsc2dIvnViGqfXMDJy4avGjbz+NadWzuZI9qFrbPMaS3GgKCFeC6+E4EWQ1A==",
+      "type": "package",
+      "path": "tg.blazor.indexeddb/0.9.0-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/TG.Blazor.IndexedDB.dll",
+        "lib/netstandard2.0/TG.Blazor.IndexedDb.JS.dll",
+        "tg.blazor.indexeddb.0.9.0-beta.nupkg.sha512",
+        "tg.blazor.indexeddb.nuspec"
+      ]
+    },
+    "Blazoring.PWA.Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Blazoring.PWA.Shared.csproj",
+      "msbuildProject": "../Shared/Blazoring.PWA.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Blazoring.PWA.Shared >= 1.0.0",
+      "Blazorise.DataGrid >= 0.9.2.4",
+      "Blazorise.Icons.Material >= 0.9.2.4",
+      "Blazorise.Material >= 0.9.2.4",
+      "Blazorise.Sidebar >= 0.9.2.4",
+      "Blazorise.Snackbar >= 0.9.2.4",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.1",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.1",
+      "Reshiru.Blazor.IndexedDB.Framework >= 1.0.1",
       "System.Net.Http.Json >= 5.0.0"
     ]
   },
@@ -1151,9 +1691,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Progetti\\andreatosato\\azure-static-app-pushnotification\\src\\Client\\Blazorin.PWA.Client.csproj",
-      "projectName": "Blazorin.PWA.Client",
-      "projectPath": "D:\\Progetti\\andreatosato\\azure-static-app-pushnotification\\src\\Client\\Blazorin.PWA.Client.csproj",
+      "projectUniqueName": "D:\\Progetti\\andreatosato\\azure-static-app-pushnotification\\src\\Client\\Blazoring.PWA.Client.csproj",
+      "projectName": "Blazoring.PWA.Client",
+      "projectPath": "D:\\Progetti\\andreatosato\\azure-static-app-pushnotification\\src\\Client\\Blazoring.PWA.Client.csproj",
       "packagesPath": "C:\\Users\\Andrea Tosato\\.nuget\\packages\\",
       "outputPath": "D:\\Progetti\\andreatosato\\azure-static-app-pushnotification\\src\\Client\\obj\\",
       "projectStyle": "PackageReference",
@@ -1176,7 +1716,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Progetti\\andreatosato\\azure-static-app-pushnotification\\src\\Shared\\Blazoring.PWA.Shared.csproj": {
+              "projectPath": "D:\\Progetti\\andreatosato\\azure-static-app-pushnotification\\src\\Shared\\Blazoring.PWA.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1189,6 +1733,26 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Blazorise.DataGrid": {
+            "target": "Package",
+            "version": "[0.9.2.4, )"
+          },
+          "Blazorise.Icons.Material": {
+            "target": "Package",
+            "version": "[0.9.2.4, )"
+          },
+          "Blazorise.Material": {
+            "target": "Package",
+            "version": "[0.9.2.4, )"
+          },
+          "Blazorise.Sidebar": {
+            "target": "Package",
+            "version": "[0.9.2.4, )"
+          },
+          "Blazorise.Snackbar": {
+            "target": "Package",
+            "version": "[0.9.2.4, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[5.0.1, )"
@@ -1197,6 +1761,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.1, )"
+          },
+          "Reshiru.Blazor.IndexedDB.Framework": {
+            "target": "Package",
+            "version": "[1.0.1, )"
           },
           "System.Net.Http.Json": {
             "target": "Package",

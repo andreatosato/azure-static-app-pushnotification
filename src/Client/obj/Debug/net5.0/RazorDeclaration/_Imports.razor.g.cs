@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Blazorin.PWA.Client
+namespace Blazoring.PWA.Client
 {
     #line hidden
     using System;
@@ -13,71 +13,120 @@ namespace Blazorin.PWA.Client
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 1 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 2 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 3 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 4 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 5 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 6 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 7 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
+#line 8 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
-using Blazorin.PWA.Client;
+#line 9 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazoring.PWA.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\Blazorin.PWA.Client\_Imports.razor"
-using Blazorin.PWA.Client.Shared;
+#line 10 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazoring.PWA.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazorise;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazorise.Snackbar;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazorise.Sidebar;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazorise.DataGrid;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazoring.PWA.Client.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazoring.PWA.Client.Stores;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Progetti\andreatosato\azure-static-app-pushnotification\src\Client\_Imports.razor"
+using Blazoring.PWA.Client.Components;
 
 #line default
 #line hidden

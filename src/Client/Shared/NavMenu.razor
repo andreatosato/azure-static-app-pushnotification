@@ -1,37 +1,142 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Blazorin.PWA.Client</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿@inject NavigationManager navigationManager
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
+<Bar Breakpoint="Breakpoint.Desktop" NavigationBreakpoint="Breakpoint.Tablet" ThemeContrast="ThemeContrast.Dark"
+        Mode="BarMode.VerticalInline" CollapseMode="BarCollapseMode.Small">
+    <BarToggler />
+    <BarBrand>
+        <BarItem>
+            <BarLink To="">
+                <BarIcon IconName="IconName.Desktop" />
+                Blazing PWA
+            </BarLink>
+        </BarItem>
+    </BarBrand>
+    <BarMenu>
+        <BarStart>
+            <BarLabel>Main</BarLabel>
+            <BarItem>
+                <BarLink To="">
+                    <BarIcon IconName="IconName.Dashboard" />
+                    Dashboard
+                </BarLink>
+            </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>
+                        <BarIcon IconName="IconName.Wrench" />
+                        UI Elements
+                    </BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem To="tests/buttons">
+                            Buttons
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/modals">
+                            Modals
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/cards">
+                            Cards
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/progressbars">
+                            Progress bars
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/elements">
+                            General UI
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/typography">
+                            Typography
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/collapse">
+                            Collapse
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/tables">
+                            Tables
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/figures">
+                            Figures
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/tabs">
+                            Tabs
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/carousel">
+                            Carousel
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/layout">
+                            Layout
+                        </BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>
+                        <BarIcon IconName="IconName.Edit" />
+                        Forms
+                    </BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem To="tests/forms">
+                            Forms
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/validations">
+                            Validations
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/misc-forms">
+                            Misc
+                        </BarDropdownItem>
+                        <BarDropdown>
+                            <BarDropdownToggle>
+                                Nested Forms
+                            </BarDropdownToggle>
+                            <BarDropdownMenu>
+                                <BarDropdownItem To="tests/forms">
+                                    Nested Forms
+                                </BarDropdownItem>
+                                <BarDropdownItem To="tests/validations">
+                                    Nested Validations
+                                </BarDropdownItem>
+                            </BarDropdownMenu>
+                        </BarDropdown>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>
+                        <BarIcon IconName="IconName.PuzzlePiece" />
+                        Extensions
+                    </BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem To="tests/datagrid">
+                            Data Grid
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/components">
+                            Components
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/charts">
+                            Charts
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/livecharts">
+                            Live Charts
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/treeview">
+                            TreeView
+                        </BarDropdownItem>
+                        <BarDropdownItem To="tests/richtextedit">
+                            RichTextEdit
+                        </BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+        </BarStart>
+    </BarMenu>
+</Bar>
+
 
 @code {
-    private bool collapseNavMenu = true;
+    SidebarSubItem eventsSubItems;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    void ToggleSidebar()
     {
-        collapseNavMenu = !collapseNavMenu;
+        AppStore.Sidebar.Toggle();
     }
+
 }

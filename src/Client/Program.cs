@@ -1,14 +1,14 @@
+using Blazoring.PWA.Client.Services;
+using Blazorise;
+using Blazorise.Icons.Material;
+using Blazorise.Material;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Blazorin.PWA.Client
+namespace Blazoring.PWA.Client
 {
     public class Program
     {
@@ -17,9 +17,22 @@ namespace Blazorin.PWA.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddBlazorise(options =>
+            {
+                options.ChangeTextOnKeyPress = true;
+            })
+            .AddMaterialProviders()
+            .AddMaterialIcons();
 
-            await builder.Build().RunAsync();
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddTransient<ISnackbarService, SnackbarService>();
+
+            var host = builder.Build();
+            host.Services
+              .UseMaterialProviders()
+              .UseMaterialIcons();
+
+            await host.RunAsync();
         }
     }
 }

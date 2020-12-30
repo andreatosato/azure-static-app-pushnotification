@@ -1,6 +1,6 @@
 {
-  "name": "Blazorin.PWA.Client",
-  "short_name": "Blazorin.PWA.Client",
+  "name": "Blazoring.PWA.Client",
+  "short_name": "Blazoring.PWA.Client",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

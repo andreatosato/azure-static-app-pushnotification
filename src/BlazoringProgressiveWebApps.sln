@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazoring.PWA.API", "Api\Bl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazoring.PWA.Shared", "Shared\Blazoring.PWA.Shared.csproj", "{F3DE1A08-8695-4D1A-BDC9-6F3CA257F43F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazorin.PWA.Client", "Client\Blazorin.PWA.Client.csproj", "{99EDBC0C-341F-4974-8ECB-E06BFAE84790}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazoring.PWA.Client", "Client\Blazoring.PWA.Client.csproj", "{99EDBC0C-341F-4974-8ECB-E06BFAE84790}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
