@@ -7,6 +7,9 @@ self.addEventListener('install', async event => {
     self.skipWaiting();
 });
 
+self.addEventListener('online', () => { alert('online') });
+self.addEventListener('offline', () => { alert('offline') });
+
 self.addEventListener('fetch', () => { });
 
 self.addEventListener('push', event => {

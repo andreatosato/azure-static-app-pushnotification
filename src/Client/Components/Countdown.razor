@@ -1,0 +1,46 @@
+﻿<div hidden="@(!Show)">
+    <Heading Size="HeadingSize.Is4" Alignment="TextAlignment.Center">
+        <div style="line-height:1">
+            <Icon Name="@IconName.Times" IconStyle="IconStyle.Solid" Style="font-size:32px; font-weight:400;"></Icon>
+            @Days days - @Hours:@Minutes:@Seconds
+        </div>
+    </Heading>
+</div>
+
+@code {
+
+    public string Days { get; set; }
+    public string Hours { get; set; }
+    public string Minutes { get; set; }
+    public string Seconds { get; set; }
+    public bool Show = false;
+
+    [Parameter]
+    public DateTime TargetDate { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+#pragma warning disable 4014
+        Timer().ConfigureAwait(false); // Detach
+#pragma warning restore 4014
+    }
+
+    public async Task Timer()
+    {
+        DateTime currentDate = DateTime.UtcNow;
+        while (TargetDate > currentDate)
+        {
+            Show = true;
+            TimeSpan currentSpan = TargetDate.Subtract(currentDate);
+            Days = currentSpan.Days.ToString();
+            Hours = currentSpan.Hours.ToString();
+            Minutes = currentSpan.Minutes.ToString();
+            Seconds = currentSpan.Seconds.ToString();
+
+            StateHasChanged();
+            await Task.Delay(1_000);
+            currentDate = DateTime.UtcNow;
+        }
+    }
+}

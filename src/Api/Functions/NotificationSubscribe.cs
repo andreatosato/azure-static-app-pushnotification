@@ -27,7 +27,7 @@ namespace Blazoring.PWA.API
 
         [FunctionName("NotificationSubscribe")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             var responseBody = await req.ReadAsStringAsync();
@@ -37,12 +37,12 @@ namespace Blazoring.PWA.API
             var webPushClient = new WebPushClient();
             try
             {
-                //var payload = JsonSerializer.Serialize(new
-                //{
-                //    message = "Ciao",
-                //    url = $"myorders/10",
-                //});
-                //await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
+                var payload = System.Text.Json.JsonSerializer.Serialize(new
+                {
+                    message = "Ciao",
+                    url = $"myorders/10",
+                });
+                await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
                 // Save pushSubscription
             }
             catch (Exception ex)

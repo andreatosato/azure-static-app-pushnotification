@@ -1,8 +1,7 @@
 ﻿(function () {
-
     // Note: Replace with your own key pair before deploying
     const applicationServerPublicKey = 'BLPLA4GcvI0Yn9lkY1KlIyLwsjZGjQIuiCq03UhqfumEh4U4bziXReGbY2C9kEbcGnxogQ8KIWalqUAs38LTZPQ';
-    window.codegenPushNotifications = {
+    window.blazoring = {
         requestSubscription: async () => {
             const worker = await navigator.serviceWorker.getRegistration();
             const existingSubscription = await worker.pushManager.getSubscription();

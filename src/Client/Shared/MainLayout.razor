@@ -1,6 +1,4 @@
 ﻿@inherits LayoutComponentBase
-@inject NavigationManager navigationManager
-@inject ISnackbarService SnackbarService
 
 <Layout Sider="true">
     <LayoutSider>
@@ -44,36 +42,3 @@
         </LayoutContent>
     </Layout>
 </Layout>
-
-@code{
-    protected override void OnInitialized()
-    {
-        SnackbarService.OnShow += OnShow;
-    }
-
-    public void Dispose()
-    {
-        SnackbarService.OnShow -= OnShow;
-    }
-
-    public void OnShow(string message, SnackbarType type)
-    {
-        SnackbarType = type;
-        SnackbarMessage = message;
-        snackbarRef.Show();
-    }
-
-    Snackbar snackbarRef;
-    SnackbarType SnackbarType;
-    string SnackbarMessage;
-
-    string menuIcon = "menu";
-    void ToggleSidebar()
-    {
-        if (AppStore.Sidebar.Visible)
-            menuIcon = "menu";
-        else
-            menuIcon = "menu_open";
-        AppStore.Sidebar.Toggle();
-    }
-}
