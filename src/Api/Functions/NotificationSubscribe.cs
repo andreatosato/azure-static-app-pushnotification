@@ -27,8 +27,7 @@ namespace Blazoring.PWA.API
 
         [FunctionName("NotificationSubscribe")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
         {
             var responseBody = await req.ReadAsStringAsync();
             NotificationSubscription subscription = JsonConvert.DeserializeObject<NotificationSubscription>(responseBody);

@@ -24,7 +24,11 @@ namespace Blazoring.PWA.Client
             .AddMaterialProviders()
             .AddMaterialIcons();
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+#if DEBUG
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:7071/api/") });
+#else
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri($"{builder.HostEnvironment.BaseAddress}/api") });
+#endif
             builder.Services.AddTransient<ISnackbarService, SnackbarService>();
 
             var host = builder.Build();

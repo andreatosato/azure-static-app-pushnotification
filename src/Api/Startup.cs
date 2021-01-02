@@ -14,7 +14,12 @@ namespace Blazoring.PWA.API
         public override void Configure(IFunctionsHostBuilder builder)
         {
             this.builder = builder;
-            services.Configure<WebPushNotificationConfig>(Configuration.GetSection(nameof(WebPushNotificationConfig)));
+            builder.Services
+                .AddOptions<WebPushNotificationConfig>()
+                .Configure<IConfiguration>((settings, configuration) =>
+                {
+                    configuration.GetSection("WebPushNotification").Bind(settings);
+                });
         }
     }
 }
