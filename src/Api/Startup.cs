@@ -1,4 +1,5 @@
 ﻿using Blazoring.PWA.API.Configurations;
+using Blazoring.PWA.API.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,7 @@ namespace Blazoring.PWA.API
         public override void Configure(IFunctionsHostBuilder builder)
         {
             this.builder = builder;
+            services.AddTransient<ISeedGeneratorService, BogusGeneratorService>();
             builder.Services
                 .AddOptions<WebPushNotificationConfig>()
                 .Configure<IConfiguration>((settings, configuration) =>
