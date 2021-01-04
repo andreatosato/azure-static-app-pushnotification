@@ -1,5 +1,7 @@
+using Blazor.IndexedDB.Framework;
 using Blazoring.PWA.Client.Services;
 using Blazorise;
+using Blazorise.Icons.FontAwesome;
 using Blazorise.Icons.Material;
 using Blazorise.Material;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -23,6 +25,7 @@ namespace Blazoring.PWA.Client
             })
             .AddMaterialProviders()
             .AddMaterialIcons();
+            /*.AddFontAwesomeIcons()*/;
 
 #if DEBUG
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:7071/api/") });
@@ -30,11 +33,14 @@ namespace Blazoring.PWA.Client
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri($"{builder.HostEnvironment.BaseAddress}/api") });
 #endif
             builder.Services.AddTransient<ISnackbarService, SnackbarService>();
+            builder.Services.AddTransient<IUserService, UserService>();
+            builder.Services.AddScoped<IIndexedDbFactory, IndexedDbFactory>();
 
             var host = builder.Build();
             host.Services
               .UseMaterialProviders()
               .UseMaterialIcons();
+              //.UseFontAwesomeIcons();
 
             await host.RunAsync();
         }

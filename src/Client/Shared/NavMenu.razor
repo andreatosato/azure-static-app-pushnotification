@@ -15,6 +15,24 @@
         <BarStart>
             <BarLabel>Main</BarLabel>
             <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>
+                        <BarIcon IconName="@("account_circle")" />
+                        Users
+                    </BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem To="users">
+                            <BarIcon IconName="@("person_search")" />
+                            Users List
+                        </BarDropdownItem>
+                        <BarDropdownItem To="usersgrid">
+                            <BarIcon IconName="@("account_box")" />
+                            Users Grid
+                        </BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+            <BarItem>
                 <BarLink To="">
                     <BarIcon IconName="IconName.Dashboard" />
                     Dashboard

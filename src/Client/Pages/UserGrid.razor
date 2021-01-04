@@ -1,0 +1,47 @@
+﻿@page "/usersgrid"
+@using Blazoring.PWA.Shared.Models
+@using Blazor.IndexedDB.Framework
+@inject IIndexedDbFactory DbFactory
+@inject NavigationManager nagivation
+
+<DataGrid TItem="User"
+          Data="@Users"
+          @bind-SelectedRow="@SelectedUser"
+          Filterable="true"
+          PageSize="5"
+          ShowPager="true"
+          ShowPageSizes="true">
+    <DataGridColumn TItem="User" Field="@nameof(User.Id)" Caption="#" Sortable="false">
+        <DisplayTemplate>
+            <Buttons Orientation="Orientation.Horizontal">
+                <Button Color="Color.Primary" Clicked="@(() => GoToDetails(( context as User )))"><Icon Name="IconName.Search"></Icon> Details</Button>
+            </Buttons>
+        </DisplayTemplate>
+    </DataGridColumn>
+    <DataGridColumn TItem="User" Field="@nameof(User.FullName)" Caption="Name" />
+    <DataGridColumn TItem="User" Field="@nameof(User.JobType)" Caption="Job Type" />
+    <DataGridColumn TItem="User" Field="@nameof(User.JobTitle)" Caption="Job Title" />
+    <DataGridColumn TItem="User" Field="@nameof(User.State)" Caption="State" />
+    <DataGridColumn TItem="User" Field="@nameof(User.StreetAddress)" Caption="Street Address" />
+    <Loading IsLoading="@IsGridLoading"></Loading>
+</DataGrid>
+
+@code {
+
+    [Inject]
+    public IUserService UserService { get; set; }
+    public List<User> Users { get; set; } = new List<User>();
+    public User SelectedUser { get; set; }
+    public bool IsGridLoading { get; set; } = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = (await UserService.GetUserAsync().ConfigureAwait(false)).ToList();
+        IsGridLoading = false;
+    }
+
+    public void GoToDetails(User user)
+    {
+        nagivation.NavigateTo($"/users/{user.Id}");
+    }
+}

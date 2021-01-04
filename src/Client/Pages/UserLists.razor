@@ -1,0 +1,25 @@
+﻿@page "/users"
+@using Blazoring.PWA.Shared.Models
+@using Blazor.IndexedDB.Framework
+@inject IIndexedDbFactory DbFactory
+
+<Row>
+    @foreach (var u in Users)
+    {
+        <Column ColumnSize="ColumnSize.IsHalf">
+            <UserInfo User="u"></UserInfo>
+        </Column>
+    }
+</Row>
+
+@code {
+
+    [Inject]
+    public IUserService UserService { get; set; }
+    public List<User> Users { get; set; } = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = (await UserService.GetUserAsync().ConfigureAwait(false)).ToList();
+    }
+}

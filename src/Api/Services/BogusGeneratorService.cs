@@ -40,9 +40,10 @@ namespace Blazoring.PWA.API.Services
                 .RuleFor(u => u.Picture, (f, u) => new Uri(f.Image.LoremFlickrUrl(keywords: $"{u.Country}", width: 800, height: 600)))
                 .RuleFor(u => u.State, (f,u) => f.Address.State())
                 .RuleFor(u => u.StreetAddress, (f, u) => f.Address.StreetAddress())
-                .RuleFor(u => u.UserDescription, (f, u) => lorem.Paragraphs(f.Random.Int(2,7), separator: "<br>"))
+                .RuleFor(u => u.UserDescription, (f, u) => lorem.Paragraphs(f.Random.Int(1,3), separator: "\n\n"))
                 .RuleFor(u => u.Balance, (f, u) => f.Random.Decimal(-10_000m, 1_000_000m))
                 .RuleFor(u => u.JobTitle, (f, u) => f.Name.JobTitle())
+                .RuleFor(u => u.JobType, (f, u) => f.Name.JobType())
                 .RuleFor(u => u.PhoneNumber, (f, u) => f.Phone.PhoneNumber());
 
             User[] result = new User[count];
