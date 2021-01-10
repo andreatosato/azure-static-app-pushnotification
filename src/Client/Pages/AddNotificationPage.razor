@@ -1,0 +1,28 @@
+﻿@page "/notifications"
+
+<Heading Size="HeadingSize.Is3">Notifications</Heading>
+
+<Row>
+    <Column ColumnSize="ColumnSize.IsHalf">
+        <Button Clicked="AddNotification"><Image Name="add_alert"></Image> Normal </Button>
+    </Column>
+    <Column ColumnSize="ColumnSize.IsHalf">
+        <Button Clicked="AddNotificationWithImage"><Image Name="add_alert"></Image>With Image</Button>
+    </Column>
+</Row>
+
+@code
+{
+    [Inject]
+    public HttpClient Client { get; set; }
+
+    public async Task AddNotification()
+    {
+
+    }
+
+    public async Task AddNotificationWithImage()
+    {
+
+    }
+}

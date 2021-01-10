@@ -35,12 +35,15 @@ namespace Blazoring.PWA.Client
             builder.Services.AddTransient<ISnackbarService, SnackbarService>();
             builder.Services.AddTransient<IUserService, UserService>();
             builder.Services.AddScoped<IIndexedDbFactory, IndexedDbFactory>();
+            builder.Services.AddTransient<JSInstanceHelper>();
 
             var host = builder.Build();
             host.Services
               .UseMaterialProviders()
               .UseMaterialIcons();
-              //.UseFontAwesomeIcons();
+            //.UseFontAwesomeIcons();
+
+            JSHelper.Client = host.Services.GetRequiredService<HttpClient>();
 
             await host.RunAsync();
         }

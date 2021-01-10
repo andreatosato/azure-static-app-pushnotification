@@ -2,7 +2,14 @@
 @using Blazoring.PWA.Shared.Models
 @using Blazor.IndexedDB.Framework
 @inject IIndexedDbFactory DbFactory
+@inject NavigationManager nagivation
 
+<Heading Size="HeadingSize.Is3">Users</Heading>
+<Row Class="row-primary">
+    <Buttons>
+        <Button Clicked="CreateUser" Color="Color.Secondary"><Icon Name="IconName.UserPlus"></Icon> Create Users</Button>
+    </Buttons>
+</Row>
 <Row>
     @foreach (var u in Users)
     {
@@ -17,9 +24,15 @@
     [Inject]
     public IUserService UserService { get; set; }
     public List<User> Users { get; set; } = new List<User>();
+    private IReadOnlyList<Country> countries = new List<Country>();
 
     protected override async Task OnInitializedAsync()
     {
         Users = (await UserService.GetUserAsync().ConfigureAwait(false)).ToList();
+    }
+
+    public void CreateUser()
+    {
+        nagivation.NavigateTo(Routes.UserCreate());
     }
 }

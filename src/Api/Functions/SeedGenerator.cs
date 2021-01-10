@@ -23,12 +23,20 @@ namespace Blazoring.PWA.API.Functions
         }
 
         [FunctionName("SeedUsers")]
-        public IActionResult Run(
+        public IActionResult SeedUsers(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req)
         {
             int count = req.Query.ContainsKey("Count") ? int.Parse(req.Query["Count"]) : 10;
             var users = seedGenerator.GetUsers(count);
             return new OkObjectResult(users);
+        }
+
+        [FunctionName("SeedCountries")]
+        public IActionResult SeedCountries(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req)
+        {
+            var countries = seedGenerator.GetCountries();
+            return new OkObjectResult(countries);
         }
     }
 }

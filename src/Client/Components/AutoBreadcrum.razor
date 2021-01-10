@@ -31,31 +31,22 @@
         Links.Clear();
         switch (location.ToLowerInvariant())
         {
-            case BreadCrum.EventList:
-                Links.Add(new BreadCrumLink(BreadCrum.EventList, "Events", true));
+            case BreadCrum.UsersList:
+                Links.Add(new BreadCrumLink(BreadCrum.UsersList, "Users", true));
                 break;
-            case BreadCrum.EventCreate:
-                Links.Add(new BreadCrumLink(BreadCrum.EventList, "Events"));
-                Links.Add(new BreadCrumLink(BreadCrum.EventCreate, "Create", true));
+            case string link when link.Contains(BreadCrum.UserEdit):
+                Links.Add(new BreadCrumLink(BreadCrum.UsersList, "Users"));
+                Links.Add(new BreadCrumLink(BreadCrum.UserEdit, "Edit", true));
                 break;
-            case string link when link.Contains(BreadCrum.EventEdit):
-                Links.Add(new BreadCrumLink(BreadCrum.EventList, "Events"));
-                Links.Add(new BreadCrumLink(BreadCrum.EventEdit, "Edit", true));
+            case string link when link.Contains(BreadCrum.UserCreate):
+                Links.Add(new BreadCrumLink(BreadCrum.UsersList, "Users"));
+                Links.Add(new BreadCrumLink(BreadCrum.UserEdit, "Create", true));
                 break;
-            case BreadCrum.EventReport:
-                Links.Add(new BreadCrumLink(BreadCrum.EventList, "Events"));
-                Links.Add(new BreadCrumLink(BreadCrum.EventReport, "Reports", true));
+            case BreadCrum.UsersGrid:
+                Links.Add(new BreadCrumLink(BreadCrum.UsersGrid, "Users", true));
                 break;
-            case BreadCrum.CommunityList:
-                Links.Add(new BreadCrumLink(BreadCrum.CommunityList, "Communities", true));
-                break;
-            case BreadCrum.CommunityCreate:
-                Links.Add(new BreadCrumLink(BreadCrum.CommunityList, "Communities"));
-                Links.Add(new BreadCrumLink(BreadCrum.EventCreate, "Create", true));
-                break;
-            case string link when link.Contains(BreadCrum.CommunityEdit):
-                Links.Add(new BreadCrumLink(BreadCrum.CommunityList, "Communities"));
-                Links.Add(new BreadCrumLink(BreadCrum.CommunityEdit, "Edit", true));
+            case BreadCrum.Notifications:
+                Links.Add(new BreadCrumLink(BreadCrum.Notifications, "Notifiche", true));
                 break;
             default:
                 Links.Add(new BreadCrumLink(BreadCrum.Home, "Home"));

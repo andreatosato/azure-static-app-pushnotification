@@ -33,113 +33,15 @@
                 </BarDropdown>
             </BarItem>
             <BarItem>
-                <BarLink To="">
-                    <BarIcon IconName="IconName.Dashboard" />
-                    Dashboard
-                </BarLink>
-            </BarItem>
-            <BarItem>
                 <BarDropdown>
                     <BarDropdownToggle>
-                        <BarIcon IconName="IconName.Wrench" />
-                        UI Elements
+                        <BarIcon IconName="@("notification_important")" />
+                        Push Notification
                     </BarDropdownToggle>
                     <BarDropdownMenu>
-                        <BarDropdownItem To="tests/buttons">
-                            Buttons
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/modals">
-                            Modals
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/cards">
-                            Cards
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/progressbars">
-                            Progress bars
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/elements">
-                            General UI
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/typography">
-                            Typography
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/collapse">
-                            Collapse
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/tables">
-                            Tables
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/figures">
-                            Figures
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/tabs">
-                            Tabs
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/carousel">
-                            Carousel
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/layout">
-                            Layout
-                        </BarDropdownItem>
-                    </BarDropdownMenu>
-                </BarDropdown>
-            </BarItem>
-            <BarItem>
-                <BarDropdown>
-                    <BarDropdownToggle>
-                        <BarIcon IconName="IconName.Edit" />
-                        Forms
-                    </BarDropdownToggle>
-                    <BarDropdownMenu>
-                        <BarDropdownItem To="tests/forms">
-                            Forms
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/validations">
-                            Validations
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/misc-forms">
-                            Misc
-                        </BarDropdownItem>
-                        <BarDropdown>
-                            <BarDropdownToggle>
-                                Nested Forms
-                            </BarDropdownToggle>
-                            <BarDropdownMenu>
-                                <BarDropdownItem To="tests/forms">
-                                    Nested Forms
-                                </BarDropdownItem>
-                                <BarDropdownItem To="tests/validations">
-                                    Nested Validations
-                                </BarDropdownItem>
-                            </BarDropdownMenu>
-                        </BarDropdown>
-                    </BarDropdownMenu>
-                </BarDropdown>
-            </BarItem>
-            <BarItem>
-                <BarDropdown>
-                    <BarDropdownToggle>
-                        <BarIcon IconName="IconName.PuzzlePiece" />
-                        Extensions
-                    </BarDropdownToggle>
-                    <BarDropdownMenu>
-                        <BarDropdownItem To="tests/datagrid">
-                            Data Grid
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/components">
-                            Components
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/charts">
-                            Charts
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/livecharts">
-                            Live Charts
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/treeview">
-                            TreeView
-                        </BarDropdownItem>
-                        <BarDropdownItem To="tests/richtextedit">
-                            RichTextEdit
+                        <BarDropdownItem To="notifications">
+                            <BarIcon IconName="@("add_alert")" />
+                            Emit Notification
                         </BarDropdownItem>
                     </BarDropdownMenu>
                 </BarDropdown>

@@ -7,6 +7,7 @@ namespace Blazoring.PWA.API.Services
 {
     public interface ISeedGeneratorService
     {
+        Country[] GetCountries();
         User[] GetUsers(int count);
     }
 
@@ -21,9 +22,21 @@ namespace Blazoring.PWA.API.Services
             lorem = new Lorem(locale: language);
         }
 
+        public Country[] GetCountries()
+        {
+            var countries = new Country[] { "Germany", "Italy", "Switzerland", "Sweden", "Argentina", "Republic of Ireland", 
+                "Russia", "Brazil", "Norway", "Denmark", "England", "France", "Spain", "Mexico", "Netherlands", 
+                "Nigeria", "Belgium", "Colombia", "Poland", "Romania", "Uruguay", "Portugal", "Cameroon", "Zambia", 
+                "Egypt", "Wales", "USA", "Côte d'Ivoire", "Scotland", "Tunisia", "Greece", "Morocco", "Algeria", "Ecuador", 
+                "Korea Republic", "Bulgaria", "Austria", "Costa Rica", "Northern Ireland", "Honduras", "Hungary", "Japan", 
+                "Saudi Arabia", "China", "Canada", "Finland", "Ghana", "Chile", "Zimbabwe", "Qatar", "Australia" };
+            return countries;
+        }
+
         public User[] GetUsers(int count)
         {
             var userIds = 0;
+            var countries = GetCountries();
             var faker = new Faker<User>(language)
                 .CustomInstantiator(f => new User(userIds++))
                 .RuleFor(u => u.Gender, f => f.PickRandom<Gender>())
@@ -34,10 +47,10 @@ namespace Blazoring.PWA.API.Services
                 .RuleFor(u => u.FullName, (f, u) => $"{u.FirstName} {u.LastName}")
                 .RuleFor(u => u.BirthDay, (f,u) => f.Date.Past(18, DateTime.UtcNow.AddYears(-100)))
                 .RuleFor(u => u.City, (f,u) => f.Address.City())
-                .RuleFor(u => u.Country, (f, u) => f.Address.Country())
+                .RuleFor(u => u.Country, (f, u) => f.PickRandom(countries))
                 .RuleFor(u => u.Latitude, (f, u) => f.Address.Latitude())
                 .RuleFor(u => u.Longitude, (f, u) => f.Address.Longitude())
-                .RuleFor(u => u.Picture, (f, u) => new Uri(f.Image.LoremFlickrUrl(keywords: $"{u.Country}", width: 800, height: 600)))
+                .RuleFor(u => u.Picture, (f, u) => new Uri(f.Image.LoremFlickrUrl(keywords: $"{u.Country.Name}", width: 800, height: 600)))
                 .RuleFor(u => u.State, (f,u) => f.Address.State())
                 .RuleFor(u => u.StreetAddress, (f, u) => f.Address.StreetAddress())
                 .RuleFor(u => u.UserDescription, (f, u) => lorem.Paragraphs(f.Random.Int(1,3), separator: "\n\n"))
