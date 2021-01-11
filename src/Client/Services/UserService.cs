@@ -115,17 +115,23 @@ namespace Blazoring.PWA.Client.Services
 
         public async Task SaveUserAsync(User user)
         {
+            bool isUpdate = false;
             using var db = await lazyDb.Value;
             {
                 var dbUser = db.Users.Where(t => t.Id == user.Id).FirstOrDefault();
                 if(dbUser != null)
                 {
                     db.Users.Remove(dbUser);
+                    isUpdate = true;
                 }
                 var newEntity = new UserEntity();
                 newEntity.FromModel(user);
                 db.Users.Add(newEntity);
                 await db.SaveChanges().ConfigureAwait(false);
+                if(isUpdate)
+                    await client.PostAsJsonAsync("UpdateUser", user).ConfigureAwait(false);
+                else
+                    await client.PostAsJsonAsync("InsertUser", user).ConfigureAwait(false);
             }
         }
     }

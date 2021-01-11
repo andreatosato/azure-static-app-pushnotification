@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Blazoring.PWA.API.Services;
+using Blazoring.PWA.Shared.Models;
 
 namespace Blazoring.PWA.API.Functions
 {
@@ -37,6 +38,26 @@ namespace Blazoring.PWA.API.Functions
         {
             var countries = seedGenerator.GetCountries();
             return new OkObjectResult(countries);
+        }
+
+        [FunctionName("InsertUser")]
+        public async Task<IActionResult> InsertUser(
+           [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
+        {
+            var responseBody = await req.ReadAsStringAsync();
+            User user = JsonConvert.DeserializeObject<User>(responseBody);
+            seedGenerator.SetUser(user);
+            return new OkResult();
+        }
+
+        [FunctionName("UpdateUser")]
+        public async Task<IActionResult> UpdateUser(
+           [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
+        {
+            var responseBody = await req.ReadAsStringAsync();
+            User user = JsonConvert.DeserializeObject<User>(responseBody);
+            seedGenerator.UpdateUser(user);
+            return new OkResult();
         }
     }
 }

@@ -47,13 +47,29 @@
             </Field>
             <Field>
                 <Validation>
-                    <TextEdit Text="@pictureUrl" TextChanged="@OnPictureChanged" Role="TextRole.Url" Placeholder="@nameof(User.Picture)">
+                    <TextEdit @bind-Text="@CurrentUser.UserName" Placeholder="@nameof(User.UserName)">
                         <Feedback>
                             <ValidationError />
                         </Feedback>
                     </TextEdit>
                 </Validation>
             </Field>
+            <Fields>
+                <Field>
+                    <Validation>
+                        <TextEdit Text="@pictureUrl" TextChanged="@OnPictureChanged" Role="TextRole.Url" Placeholder="@nameof(User.Picture)">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+                <Field>
+                    <Card>
+                        <CardImage Source="@pictureUrl" Alt="Image Preview"></CardImage>
+                    </Card>
+                </Field>
+            </Fields>
             <Fields>
                 <Validation>
                     <Field>
@@ -113,8 +129,58 @@
                     </Field>
                 </Validation>
             </Fields>
+            <Fields>
+                <Field>
+                    <Validation>
+                        <Field>
+                            <TextEdit Placeholder="@nameof(User.State)" @bind-Text="@CurrentUser.State">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                </Field>
+                <Field>
+                    <Validation>
+                        <Field>
+                            <TextEdit Placeholder="@nameof(User.StreetAddress)" @bind-Text="@CurrentUser.StreetAddress">
+                                <Feedback>
+                                    <ValidationError />
+                                </Feedback>
+                            </TextEdit>
+                        </Field>
+                    </Validation>
+                </Field>
+            </Fields>
+            <Field>
+                <Validation>
+                    <Select @bind-SelectedValue="@CurrentUser.Gender">
+                        <ChildContent>
+                            @foreach (Gender c in Enum.GetValues<Gender>())
+                            {
+                                <SelectItem Value="@(c)">@(Enum.GetName<Gender>(c))</SelectItem>
+                            }
+                        </ChildContent>
+                        <Feedback>
+                            <ValidationError />
+                        </Feedback>
+                    </Select>
+                </Validation>
+            </Field>
+            <Field>
+                <Validation>
+                    <Field>
+                        <MemoEdit Placeholder="@nameof(User.UserDescription)" @bind-Text="@CurrentUser.UserDescription" Rows="15">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </MemoEdit>
+                    </Field>
+                </Validation>
+            </Field>
         </Validations>
-        <Buttons>
+        <Buttons Size="Size.Large" Role="ButtonsRole.Toolbar">
             <Button Color="Color.Success" Clicked="@Submit">Save</Button>
             <Button Color="Color.Danger" Clicked="@Undo">Undo</Button>
             <Button Color="Color.Warning" Clicked="@Clear">Clear</Button>
@@ -140,12 +206,11 @@
     [Parameter]
     public bool EditMode { get; set; } = false;
     [Parameter]
-    public User CurrentUser { get; set; } = new User(new Random().Next(0, int.MaxValue));
+    public User CurrentUser { get; set; } = new User(new Random().Next(0, int.MaxValue)) { Gender = Gender.Female };
     [Parameter]
     public IList<Country> Countries { get; set; } = new List<Country>();
     [Inject]
     public IUserService UserService { get; set; }
-
 
     private Validations validations;
     private User _backupUser;
@@ -167,7 +232,6 @@
         {
             pictureUrl = CurrentUser.Picture?.ToString();
             _backupUser = (User)CurrentUser.Clone();
-            //_country = CurrentUser.Country.Name;
         }
     }
 

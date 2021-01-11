@@ -31,6 +31,7 @@ namespace Blazoring.PWA.API
                 {
                     configuration.GetSection("WebPushNotification").Bind(settings);
                 });
+            builder.Services.AddTransient<IStorageService>(sp => new StorageService(Configuration.GetConnectionString("Default")));
         }
     }
 }

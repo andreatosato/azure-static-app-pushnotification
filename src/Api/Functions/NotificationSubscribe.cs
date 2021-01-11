@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using Blazoring.PWA.Shared;
 using WebPush;
 using Blazoring.PWA.API.Configurations;
+using Blazoring.PWA.API.Services;
 
 namespace Blazoring.PWA.API
 {
@@ -17,12 +18,15 @@ namespace Blazoring.PWA.API
     {
         private readonly WebPushNotificationConfig webPushNotification;
         private readonly ILogger<NotificationSubscribe> _logger;
+        private IStorageService _storageService;
 
         public NotificationSubscribe(IOptions<WebPushNotificationConfig> webPushNotificationOption,
+           IStorageService storageService,
            ILogger<NotificationSubscribe> logger)
         {
             this.webPushNotification = webPushNotificationOption.Value;
             _logger = logger;
+            _storageService = storageService;
         }
 
         [FunctionName("NotificationSubscribe")]
@@ -32,21 +36,60 @@ namespace Blazoring.PWA.API
             var responseBody = await req.ReadAsStringAsync();
             NotificationSubscription subscription = JsonConvert.DeserializeObject<NotificationSubscription>(responseBody);
             var pushSubscription = new PushSubscription(subscription.Url, subscription.P256dh, subscription.Auth);
+            await _storageService.AddPushNotification(subscription);
+
+            //var vapidDetails = new VapidDetails(webPushNotification.Subject, webPushNotification.PublicKey, webPushNotification.PrivateKey);
+            //var webPushClient = new WebPushClient();
+            //try
+            //{
+            //    await _storageService.AddPushNotification(subscription);
+            //    var payload = System.Text.Json.JsonSerializer.Serialize(new
+            //    {
+            //        message = "Ciao",
+            //        url = $"myorders/10",
+            //    });
+            //    await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
+            //    // Save pushSubscription
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.Error.WriteLine("Error sending push notification: " + ex.Message);
+            //}
+            return new OkResult();
+        }
+
+        [FunctionName("NotificationOnlyText")]
+        public async Task<IActionResult> NotificationOnlyText(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
+        {
+            var responseBody = await req.ReadAsStringAsync();
+            NotificationMessageText messageText = JsonConvert.DeserializeObject<NotificationMessageText>(responseBody);
+            var notifications = await _storageService.GetAllNotifications();
             var vapidDetails = new VapidDetails(webPushNotification.Subject, webPushNotification.PublicKey, webPushNotification.PrivateKey);
-            var webPushClient = new WebPushClient();
-            try
+            foreach (var n in notifications)
             {
-                var payload = System.Text.Json.JsonSerializer.Serialize(new
-                {
-                    message = "Ciao",
-                    url = $"myorders/10",
-                });
+                var webPushClient = new WebPushClient();
+                var pushSubscription = new PushSubscription(n.Url, n.P256dh, n.Auth);
+                var payload = System.Text.Json.JsonSerializer.Serialize(messageText);
                 await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
-                // Save pushSubscription
             }
-            catch (Exception ex)
+            return new OkResult();
+        }
+
+        [FunctionName("NotificationWithImages")]
+        public async Task<IActionResult> NotificationWithImages(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
+        {
+            var responseBody = await req.ReadAsStringAsync();
+            NotificationImage messageImage = JsonConvert.DeserializeObject<NotificationImage>(responseBody);
+            var notifications = await _storageService.GetAllNotifications();
+            var vapidDetails = new VapidDetails(webPushNotification.Subject, webPushNotification.PublicKey, webPushNotification.PrivateKey);
+            foreach (var n in notifications)
             {
-                Console.Error.WriteLine("Error sending push notification: " + ex.Message);
+                var webPushClient = new WebPushClient();
+                var pushSubscription = new PushSubscription(n.Url, n.P256dh, n.Auth);
+                var payload = System.Text.Json.JsonSerializer.Serialize(messageImage);
+                await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
             }
             return new OkResult();
         }

@@ -42,6 +42,6 @@
 
     public void GoToDetails(User user)
     {
-        nagivation.NavigateTo($"/users/{user.Id}");
+        nagivation.NavigateTo(Routes.UserEdit(user.Id));
     }
 }
