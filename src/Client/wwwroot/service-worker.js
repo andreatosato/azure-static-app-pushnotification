@@ -7,8 +7,8 @@ self.addEventListener('install', async event => {
     self.skipWaiting();
 });
 
-self.addEventListener('online', () => { alert('online') });
-self.addEventListener('offline', () => { alert('offline') });
+self.addEventListener('online', function () { console.log('online'); });
+self.addEventListener('offline', function () { console.log('online'); });
 
 self.addEventListener('fetch', () => { });
 
@@ -17,7 +17,6 @@ self.addEventListener('push', event => {
     var notification = {
         body: payload.body,
         vibrate: payload.vibrate,
-        data: { url: payload.url },
         requireInteraction: true,
         actions: payload.actions
     };
@@ -30,9 +29,15 @@ self.addEventListener('push', event => {
 });
 
 self.addEventListener('notificationclick', function (event) {
-    console.log('On notification click: ', event.notification.tag);
-    event.notification.close();
-}, false);
+    console.log(event.notification.data);
+    clients.openWindow("/");
+    event.waitUntil(async function () { console.log('Notification Click.'); });
+});
+
+//self.addEventListener('notificationclick', function (event) {
+//    console.log('On notification click: ', event.notification.tag);
+//    event.notification.close();
+//}, false);
 
 //self.addEventListener('notificationclick', function (event) {
 //    console.log('On notification click: ', event.notification.tag);

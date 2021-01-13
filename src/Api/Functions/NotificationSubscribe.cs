@@ -35,7 +35,6 @@ namespace Blazoring.PWA.API
         {
             var responseBody = await req.ReadAsStringAsync();
             NotificationSubscription subscription = JsonConvert.DeserializeObject<NotificationSubscription>(responseBody);
-            var pushSubscription = new PushSubscription(subscription.Url, subscription.P256dh, subscription.Auth);
             await _storageService.AddPushNotification(subscription);
 
             //var vapidDetails = new VapidDetails(webPushNotification.Subject, webPushNotification.PublicKey, webPushNotification.PrivateKey);
@@ -89,7 +88,14 @@ namespace Blazoring.PWA.API
                 var webPushClient = new WebPushClient();
                 var pushSubscription = new PushSubscription(n.Url, n.P256dh, n.Auth);
                 var payload = System.Text.Json.JsonSerializer.Serialize(messageImage);
-                await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
+                try
+                {
+                    await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
+                }
+                catch (WebPushException) // Sottoscrizioni non più valide
+                {
+                    await _storageService.DeleteSubscription(n);
+                }                
             }
             return new OkResult();
         }
