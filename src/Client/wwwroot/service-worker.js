@@ -14,25 +14,19 @@ self.addEventListener('fetch', () => { });
 
 self.addEventListener('push', event => {
     const payload = event.data.json();
-    event.waitUntil(self.registration.showNotification('Codegen 2021 news!',
-        {
-            body: payload.message,
-            icon: 'icon-512.png',
-            badge: 'icon-512.png',
-            image: 'cat.png',
-            vibrate: [100, 50, 100],
-            data: { url: payload.url },
-            requireInteraction: true,
-            actions: [
-                {
-                    action: "agenda", title: "Open Agenda", icon: 'icon-512.png'
-                },
-                {
-                    action: "close", title: "Ignore",
-                },
-            ]
-        })
-    );    
+    var notification = {
+        body: payload.body,
+        vibrate: payload.vibrate,
+        data: { url: payload.url },
+        requireInteraction: true,
+        actions: payload.actions
+    };
+    if (payload.image != null) {
+        notification.icon = payload.icon;
+        notification.badge = payload.badge;
+        notification.image = payload.image;
+    }
+    event.waitUntil(self.registration.showNotification(payload.message, notification));    
 });
 
 self.addEventListener('notificationclick', function (event) {

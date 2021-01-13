@@ -24,6 +24,7 @@ namespace Blazoring.PWA.Shared
     {
         public string badge { get; set; }
         public string image { get; set; }
+        public string icon { get; set; }
     }
 
     public class NotifationAction
