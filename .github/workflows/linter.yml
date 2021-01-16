@@ -53,8 +53,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: 'main'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: github/workspace/super-linter.report  
+
