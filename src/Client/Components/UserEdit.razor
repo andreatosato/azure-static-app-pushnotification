@@ -8,7 +8,7 @@
             {
                 <Validation>
                     <Field>
-                        <NumericEdit Placeholder="@nameof(User.Id)" @bind-Value="@CurrentUser.Id" Decimals="0">
+                        <NumericEdit Placeholder="@nameof(User.Id)" @bind-Value="@CurrentUser.Id" Decimals="0" ReadOnly="true">
                             <Feedback>
                                 <ValidationError />
                             </Feedback>
@@ -221,7 +221,9 @@
     {
         if(Uri.TryCreate(value, UriKind.Absolute, out Uri result))
         {
+            pictureUrl = value;
             CurrentUser.Picture = new Uri(value);
+            this.StateHasChanged();
         }
     }
 

@@ -67,7 +67,7 @@
     public NotifationAction ActionOne { get; set; } = new NotifationAction();
     public NotifationAction ActionTwo { get; set; } = new NotifationAction();
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         ActionOne = new NotifationAction()
         {

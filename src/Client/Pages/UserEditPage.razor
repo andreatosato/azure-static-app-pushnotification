@@ -9,7 +9,7 @@
 @code {
     [Parameter]
     public int? Id { get; set; }
-    private User _currentUser;
+    private User _currentUser = new User(new Random().Next(int.MinValue, int.MaxValue));
     private IList<Country> countries;
 
     [Inject]
@@ -26,7 +26,5 @@
         await base.OnParametersSetAsync();
         if (Id.HasValue)
             _currentUser = await UserService.GetUserByIdAsync(Id.Value);
-        else
-            _currentUser = new User(new Random().Next(int.MinValue, int.MaxValue));
     }
 }

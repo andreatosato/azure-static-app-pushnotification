@@ -39,7 +39,7 @@ namespace Blazoring.PWA.Shared.Models
         public string StreetAddress { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 1)]
-        public Country Country { get; set; }
+        public Country Country { get; set; } = new Country();
         [Required]
         [StringLength(100, MinimumLength = 1)]
         public string City { get; set; }
