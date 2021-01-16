@@ -46,6 +46,19 @@
                     </BarDropdownMenu>
                 </BarDropdown>
             </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>
+                        <BarIcon IconName="@("login")" />
+                        Login
+                    </BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem To=".auth/login/github">
+                            <span class="oi oi-account-login" aria-hidden="true"></span> Login Github
+                        </BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
         </BarStart>
     </BarMenu>
 </Bar>

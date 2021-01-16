@@ -28,7 +28,7 @@ namespace Blazoring.PWA.Client
             /*.AddFontAwesomeIcons()*/;
 
 #if DEBUG
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:7071/api/") });
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:7071/api") });
 #else
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri($"{builder.HostEnvironment.BaseAddress}/api") });
 #endif
