@@ -2,43 +2,62 @@
 
 @if (CurrentUser != null)
 {
-    <EditForm Model="CurrentUser" OnSubmit="Submit">
-        <Validations @ref="validations" Mode="ValidationMode.Auto" Model="@CurrentUser" ValidateOnLoad="false">
-            @if (!EditMode)
-            {
-                <Validation>
-                    <Field>
-                        <NumericEdit Placeholder="@nameof(User.Id)" @bind-Value="@CurrentUser.Id" Decimals="0" ReadOnly="true">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </NumericEdit>
-                    </Field>
-                </Validation>
-            }
-            <Fields>
-                <Validation>
-                    <Field>
-                        <TextEdit Placeholder="@nameof(User.FirstName)" @bind-Text="@CurrentUser.FirstName">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Field>
-                </Validation>
-                <Validation>
-                    <Field>
-                        <TextEdit Placeholder="@nameof(User.LastName)" @bind-Text="@CurrentUser.LastName">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Field>
-                </Validation>
-            </Fields>
+<EditForm Model="CurrentUser" OnSubmit="Submit">
+    <Validations @ref="validations" Mode="ValidationMode.Auto" Model="@CurrentUser" ValidateOnLoad="false">
+        @if (!EditMode)
+        {
+            <Validation>
+                <Field>
+                    <NumericEdit Placeholder="@nameof(User.Id)" @bind-Value="@CurrentUser.Id" Decimals="0" ReadOnly="true">
+                        <Feedback>
+                            <ValidationError />
+                        </Feedback>
+                    </NumericEdit>
+                </Field>
+            </Validation>
+        }
+        <Fields>
+            <Validation>
+                <Field>
+                    <TextEdit Placeholder="@nameof(User.FirstName)" @bind-Text="@CurrentUser.FirstName">
+                        <Feedback>
+                            <ValidationError />
+                        </Feedback>
+                    </TextEdit>
+                </Field>
+            </Validation>
+            <Validation>
+                <Field>
+                    <TextEdit Placeholder="@nameof(User.LastName)" @bind-Text="@CurrentUser.LastName">
+                        <Feedback>
+                            <ValidationError />
+                        </Feedback>
+                    </TextEdit>
+                </Field>
+            </Validation>
+        </Fields>
+        <Field>
+            <Validation Validator="@ValidationRule.IsEmail">
+                <TextEdit @bind-Text="@CurrentUser.Email" Role="TextRole.Email" Placeholder="@nameof(User.Email)">
+                    <Feedback>
+                        <ValidationError />
+                    </Feedback>
+                </TextEdit>
+            </Validation>
+        </Field>
+        <Field>
+            <Validation>
+                <TextEdit @bind-Text="@CurrentUser.UserName" Placeholder="@nameof(User.UserName)">
+                    <Feedback>
+                        <ValidationError />
+                    </Feedback>
+                </TextEdit>
+            </Validation>
+        </Field>
+        <Fields>
             <Field>
-                <Validation Validator="@ValidationRule.IsEmail">
-                    <TextEdit @bind-Text="@CurrentUser.Email" Role="TextRole.Email" Placeholder="@nameof(User.Email)">
+                <Validation>
+                    <TextEdit Text="@pictureUrl" TextChanged="@OnPictureChanged" Role="TextRole.Url" Placeholder="@nameof(User.Picture)">
                         <Feedback>
                             <ValidationError />
                         </Feedback>
@@ -46,146 +65,127 @@
                 </Validation>
             </Field>
             <Field>
-                <Validation>
-                    <TextEdit @bind-Text="@CurrentUser.UserName" Placeholder="@nameof(User.UserName)">
+                <Card>
+                    <CardImage Source="@pictureUrl" Alt="Image Preview"></CardImage>
+                </Card>
+            </Field>
+        </Fields>
+        <Fields>
+            <Validation>
+                <Field>
+                    <TextEdit Placeholder="@nameof(User.JobTitle)" @bind-Text="@CurrentUser.JobTitle">
                         <Feedback>
                             <ValidationError />
                         </Feedback>
                     </TextEdit>
-                </Validation>
-            </Field>
-            <Fields>
-                <Field>
-                    <Validation>
-                        <TextEdit Text="@pictureUrl" TextChanged="@OnPictureChanged" Role="TextRole.Url" Placeholder="@nameof(User.Picture)">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Validation>
                 </Field>
+            </Validation>
+            <Validation>
                 <Field>
-                    <Card>
-                        <CardImage Source="@pictureUrl" Alt="Image Preview"></CardImage>
-                    </Card>
-                </Field>
-            </Fields>
-            <Fields>
-                <Validation>
-                    <Field>
-                        <TextEdit Placeholder="@nameof(User.JobTitle)" @bind-Text="@CurrentUser.JobTitle">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Field>
-                </Validation>
-                <Validation>
-                    <Field>
-                        <TextEdit Placeholder="@nameof(User.JobType)" @bind-Text="@CurrentUser.JobType">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Field>
-                </Validation>
-            </Fields>
-            <Field>
-                <Validation>
-                    <DateEdit @bind-Date="@CurrentUser.BirthDay" Placeholder="@nameof(User.BirthDay)">
+                    <TextEdit Placeholder="@nameof(User.JobType)" @bind-Text="@CurrentUser.JobType">
                         <Feedback>
                             <ValidationError />
                         </Feedback>
-                    </DateEdit>
-                </Validation>
-            </Field>
-            <Fields>
-                <Validation>
-                    <Field>
-                        <Select @bind-SelectedValue="@CurrentUser.Country.Name">
-                            <ChildContent>
-                                @if (Countries != null)
+                    </TextEdit>
+                </Field>
+            </Validation>
+        </Fields>
+        <Field>
+            <Validation>
+                <DateEdit @bind-Date="@CurrentUser.BirthDay" Placeholder="@nameof(User.BirthDay)">
+                    <Feedback>
+                        <ValidationError />
+                    </Feedback>
+                </DateEdit>
+            </Validation>
+        </Field>
+        <Fields>
+            <Validation>
+                <Field>
+                    <Select @bind-SelectedValue="@CurrentUser.Country.Name">
+                        <ChildContent>
+                            @if (Countries != null)
                                 {
-                                    <SelectItem Value="@("")"></SelectItem>
+                                <SelectItem Value="@("")"></SelectItem>
                                     foreach (var c in Countries)
                                     {
-                                        <SelectItem Value="@(c.Name)">@(c.Name)</SelectItem>
+                                    <SelectItem Value="@(c.Name)">@(c.Name)</SelectItem>
                                     }
                                 }
-                            </ChildContent>
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </Select>
-                    </Field>
-                </Validation>
-                <Validation>
-                    <Field>
-                        <TextEdit Placeholder="@nameof(User.City)" @bind-Text="@CurrentUser.City">
-                            <Feedback>
-                                <ValidationError />
-                            </Feedback>
-                        </TextEdit>
-                    </Field>
-                </Validation>
-            </Fields>
-            <Fields>
-                <Field>
-                    <Validation>
-                        <Field>
-                            <TextEdit Placeholder="@nameof(User.State)" @bind-Text="@CurrentUser.State">
-                                <Feedback>
-                                    <ValidationError />
-                                </Feedback>
-                            </TextEdit>
-                        </Field>
-                    </Validation>
-                </Field>
-                <Field>
-                    <Validation>
-                        <Field>
-                            <TextEdit Placeholder="@nameof(User.StreetAddress)" @bind-Text="@CurrentUser.StreetAddress">
-                                <Feedback>
-                                    <ValidationError />
-                                </Feedback>
-                            </TextEdit>
-                        </Field>
-                    </Validation>
-                </Field>
-            </Fields>
-            <Field>
-                <Validation>
-                    <Select @bind-SelectedValue="@CurrentUser.Gender">
-                        <ChildContent>
-                            @foreach (Gender c in Enum.GetValues<Gender>())
-                            {
-                                <SelectItem Value="@(c)">@(Enum.GetName<Gender>(c))</SelectItem>
-                            }
                         </ChildContent>
                         <Feedback>
                             <ValidationError />
                         </Feedback>
                     </Select>
+                </Field>
+            </Validation>
+            <Validation>
+                <Field>
+                    <TextEdit Placeholder="@nameof(User.City)" @bind-Text="@CurrentUser.City">
+                        <Feedback>
+                            <ValidationError />
+                        </Feedback>
+                    </TextEdit>
+                </Field>
+            </Validation>
+        </Fields>
+        <Fields>
+            <Field>
+                <Validation>
+                    <Field>
+                        <TextEdit Placeholder="@nameof(User.State)" @bind-Text="@CurrentUser.State">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
                 </Validation>
             </Field>
             <Field>
                 <Validation>
                     <Field>
-                        <MemoEdit Placeholder="@nameof(User.UserDescription)" @bind-Text="@CurrentUser.UserDescription" Rows="15">
+                        <TextEdit Placeholder="@nameof(User.StreetAddress)" @bind-Text="@CurrentUser.StreetAddress">
                             <Feedback>
                                 <ValidationError />
                             </Feedback>
-                        </MemoEdit>
+                        </TextEdit>
                     </Field>
                 </Validation>
             </Field>
-        </Validations>
-        <Buttons Size="Size.Large" Role="ButtonsRole.Toolbar">
-            <Button Color="Color.Success" Clicked="@Submit">Save</Button>
-            <Button Color="Color.Danger" Clicked="@Undo">Undo</Button>
-            <Button Color="Color.Warning" Clicked="@Clear">Clear</Button>
-        </Buttons>
-    </EditForm>
+        </Fields>
+        <Field>
+            <Validation>
+                <Select @bind-SelectedValue="@CurrentUser.Gender">
+                    <ChildContent>
+                        @foreach (Gender c in Enum.GetValues<Gender>())
+                            {
+                            <SelectItem Value="@(c)">@(Enum.GetName<Gender>(c))</SelectItem>
+                            }
+                    </ChildContent>
+                    <Feedback>
+                        <ValidationError />
+                    </Feedback>
+                </Select>
+            </Validation>
+        </Field>
+        <Field>
+            <Validation>
+                <Field>
+                    <MemoEdit Placeholder="@nameof(User.UserDescription)" @bind-Text="@CurrentUser.UserDescription" Rows="15">
+                        <Feedback>
+                            <ValidationError />
+                        </Feedback>
+                    </MemoEdit>
+                </Field>
+            </Validation>
+        </Field>
+    </Validations>
+    <Buttons Size="Size.Large" Role="ButtonsRole.Toolbar">
+        <Button Color="Color.Success" Clicked="@Submit">Save</Button>
+        <Button Color="Color.Danger" Clicked="@Undo">Undo</Button>
+        <Button Color="Color.Warning" Clicked="@Clear">Clear</Button>
+    </Buttons>
+</EditForm>
 }
 
 <Modal @ref="_saveModal">
@@ -197,6 +197,19 @@
         </ModalBody>
         <ModalFooter>
             <Button Clicked="(() => _saveModal.Hide())" Color="Color.Primary"><Icon Name="@("done")" IconStyle="IconStyle.Solid"></Icon></Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+<Modal @ref="_errorModal">
+    <ModalBackdrop />
+    <ModalContent IsCentered="true">
+        <ModalHeader>Errore di validazione</ModalHeader>
+        <ModalBody>
+            <Paragraph>@errorMessage</Paragraph>
+        </ModalBody>
+        <ModalFooter>
+            <Button Clicked="(() => _errorModal.Hide())" Color="Color.Primary"><Icon Name="@("done")" IconStyle="IconStyle.Solid"></Icon></Button>
         </ModalFooter>
     </ModalContent>
 </Modal>
@@ -214,9 +227,12 @@
 
     private Validations validations;
     private User _backupUser;
-    private Modal _saveModal;
-
+    private EditContext userEditContext;
+    private Modal _saveModal; 
+    private Modal _errorModal;
+    private string errorMessage = "Errore di validazione";
     string pictureUrl;
+
     void OnPictureChanged(string value)
     {
         if(Uri.TryCreate(value, UriKind.Absolute, out Uri result))
@@ -244,6 +260,12 @@
         {
             await UserService.SaveUserAsync(CurrentUser);
             _saveModal.Show();
+        }
+        else
+        {
+            errorMessage = validations.EditContext.GetValidationMessages().Aggregate((t1, t2) => string.Concat(t1, Environment.NewLine, t2));
+            _errorModal.Show();
+            StateHasChanged();
         }
     }
 
