@@ -12,23 +12,23 @@ self.addEventListener('install', async event => {
 
 self.addEventListener('fetch', () => { });
 
-self.addEventListener('push', event => {
-    const payload = event.data.json();
-    var notification = {
-        body: payload.body,
-        vibrate: payload.vibrate,
-        requireInteraction: true,
-        tag: 'tag',
-        actions: payload.actions,
-        data: payload.actions
-    };
-    if (payload.image != null) {
-        notification.icon = payload.icon;
-        notification.badge = payload.badge;
-        notification.image = payload.image;
-    }
-    event.waitUntil(self.registration.showNotification(payload.message, notification));    
-});
+//self.addEventListener('push', event => {
+//    const payload = event.data.json();
+//    var notification = {
+//        body: payload.body,
+//        vibrate: payload.vibrate,
+//        requireInteraction: true,
+//        tag: 'tag',
+//        actions: payload.actions,
+//        data: payload.actions
+//    };
+//    if (payload.image != null) {
+//        notification.icon = payload.icon;
+//        notification.badge = payload.badge;
+//        notification.image = payload.image;
+//    }
+//    event.waitUntil(self.registration.showNotification(payload.message, notification));    
+//});
 /*
 self.addEventListener("notificationclick", event => {
     event.waitUntil(getClients(event));
