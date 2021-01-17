@@ -46,7 +46,9 @@ namespace Blazoring.PWA.Client.Shared
         SnackbarType SnackbarType;
         string SnackbarMessage;
 
+#pragma warning disable IDE0052 // Remove unread private members
         string menuIcon = "menu";
+#pragma warning restore IDE0052 // Remove unread private members
         void ToggleSidebar()
         {
             if (AppStore.Sidebar.Visible)
