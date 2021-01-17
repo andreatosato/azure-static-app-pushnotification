@@ -18,7 +18,9 @@ self.addEventListener('push', event => {
         body: payload.body,
         vibrate: payload.vibrate,
         requireInteraction: true,
-        actions: payload.actions
+        tag: 'tag',
+        actions: payload.actions,
+        data: payload.actions
     };
     if (payload.image != null) {
         notification.icon = payload.icon;
@@ -27,44 +29,16 @@ self.addEventListener('push', event => {
     }
     event.waitUntil(self.registration.showNotification(payload.message, notification));    
 });
-
-self.addEventListener('notificationclick', function (event) {
-    console.log(event.notification.data);
-    clients.openWindow("/");
-    event.waitUntil(async function () { console.log('Notification Click.'); });
+self.addEventListener("notificationclick", event => {
+    event.waitUntil(getClients(event));
 });
 
-//self.addEventListener('notificationclick', function (event) {
-//    console.log('On notification click: ', event.notification.tag);
-//    event.notification.close();
-//}, false);
-
-//self.addEventListener('notificationclick', function (event) {
-//    console.log('On notification click: ', event.notification.tag);
-//    event.notification.close();
-//    //if (!event.action) {
-//    //    // Was a normal notification click
-//    //    console.log('Notification Click.');
-//    //    return;
-//    //}
-
-//    //event.waitUntil(async function () {
-//    //    if (!event.clientId) return;
-
-//    //    const client = await clients.get(event.clientId);
-//    //    if (!client) return;
-
-//    //    client.postMessage(event.data.json());
-//    //}());
-
-
-
-//    //switch (event.action) {
-//    //    case 'agenda':           
-//    //        console.log('Go to agenda');
-//    //        break;
-//    //    default:
-//    //        console.log(`Unknown action clicked: '${event.action}'`);
-//    //        break;
-//    //}
-//});
+async function getClients(event) {
+    const clientList = await self.clients.matchAll();
+    console.log(clientList);
+    clients.openWindow('https://google.it/');
+    const client = await clients.get(event.clientId);
+    client.postMessage({
+        msg: event
+    });
+}

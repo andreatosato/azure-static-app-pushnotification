@@ -227,7 +227,6 @@
 
     private Validations validations;
     private User _backupUser;
-    private EditContext userEditContext;
     private Modal _saveModal; 
     private Modal _errorModal;
     private string errorMessage = "Errore di validazione";
@@ -265,7 +264,6 @@
         {
             errorMessage = validations.EditContext.GetValidationMessages().Aggregate((t1, t2) => string.Concat(t1, Environment.NewLine, t2));
             _errorModal.Show();
-            StateHasChanged();
         }
     }
 
