@@ -7,8 +7,8 @@ self.addEventListener('install', async event => {
     self.skipWaiting();
 });
 
-self.addEventListener('online', function () { console.log('online'); });
-self.addEventListener('offline', function () { console.log('online'); });
+// self.addEventListener('online', function () { console.log('online'); });
+// self.addEventListener('offline', function () { console.log('online'); });
 
 self.addEventListener('fetch', () => { });
 
@@ -29,6 +29,7 @@ self.addEventListener('push', event => {
     }
     event.waitUntil(self.registration.showNotification(payload.message, notification));    
 });
+/*
 self.addEventListener("notificationclick", event => {
     event.waitUntil(getClients(event));
 });
@@ -42,3 +43,4 @@ async function getClients(event) {
         msg: event
     });
 }
+*/
