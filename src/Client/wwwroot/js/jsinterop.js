@@ -13,7 +13,7 @@ window.addEventListener('load', (event) => {
     }, 20000);
 }, false);
 
-//navigator.serviceWorker.addEventListener('message', event => {
-//    console.log(JSON.stringify(event));
-//    console.log(event.data.msg, event.data.url);
-//});
+window.addEventListener("message", (event) => {
+    console.log(event);
+    console.log(JSON.stringify(event));
+}, false);

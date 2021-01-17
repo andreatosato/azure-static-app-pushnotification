@@ -12,7 +12,7 @@ self.addEventListener('offline', function () { console.log('online'); });
 
 self.addEventListener('fetch', () => { });
 
-self.addEventListener('push', event => {
+self.addEventListener('push', async (event) => {
     const payload = event.data.json();
     var notification = {
         body: payload.body,
@@ -27,12 +27,19 @@ self.addEventListener('push', event => {
         notification.badge = payload.badge;
         notification.image = payload.image;
     }
+    //clients.matchAll({
+    //    type: "window"
+    //}).then(function (clientList) {
+    //    clientList[0].postMessage({
+    //        msg: event
+    //    });
+    //});
     event.waitUntil(self.registration.showNotification(payload.message, notification));    
 });
 
 self.addEventListener("notificationclick", event => {
     event.waitUntil(getClients(event));
-});
+}, true);
 
 async function getClients(event) {
     const clientList = await self.clients.matchAll();
