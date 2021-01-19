@@ -22,6 +22,13 @@ namespace Blazoring.PWA.Client.Shared
             Thread.Sleep(10000);
 #endif
         }
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+            if (firstRender)
+                await RequestNotificationSubscriptionAsync();
+        }
+
 #pragma warning disable IDE0052 // Remove unread private members
         string menuIcon = "menu";
 #pragma warning restore IDE0052 // Remove unread private members
@@ -33,5 +40,22 @@ namespace Blazoring.PWA.Client.Shared
                 menuIcon = "menu_open";
             AppStore.Sidebar.Toggle();
         }
+
+        #region [Push]
+        private async Task RequestNotificationSubscriptionAsync()
+        {
+            var subscription = await JSRuntime.InvokeAsync<NotificationSubscription>("blazoring.requestSubscription");
+            if (subscription != null)
+            {
+                await SubscribeToNotifications(subscription);
+            }
+        }
+
+        public async Task SubscribeToNotifications(NotificationSubscription subscription)
+        {
+            var response = await client.PostAsJsonAsync("NotificationSubscribe", subscription);
+            response.EnsureSuccessStatusCode();
+        }
+        #endregion
     }
 }

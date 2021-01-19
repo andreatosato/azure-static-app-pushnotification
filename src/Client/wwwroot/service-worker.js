@@ -7,3 +7,41 @@ self.addEventListener('install', async event => {
     self.skipWaiting();
 });
 
+self.addEventListener('push', async (event) => {
+    const payload = event.data.json();
+    var notification = {
+        body: payload.body,
+        vibrate: payload.vibrate,
+        requireInteraction: true,
+        tag: 'tag',
+        actions: payload.actions,
+        data: payload.actions
+    };
+    if (payload.image != null) {
+        notification.icon = payload.icon;
+        notification.badge = payload.badge;
+        notification.image = payload.image;
+    }
+    //clients.matchAll({
+    //    type: "window"
+    //}).then(function (clientList) {
+    //    clientList[0].postMessage({
+    //        msg: event
+    //    });
+    //});
+    event.waitUntil(self.registration.showNotification(payload.message, notification));
+});
+
+self.addEventListener("notificationclick", event => {
+    event.waitUntil(getClients(event));
+}, true);
+
+async function getClients(event) {
+    const clientList = await self.clients.matchAll();
+    console.log(clientList);
+    clients.openWindow('https://google.it/');
+    const client = await clients.get(event.clientId);
+    client.postMessage({
+        msg: event
+    });
+}
