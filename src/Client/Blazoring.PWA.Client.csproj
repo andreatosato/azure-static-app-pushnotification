@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\assets\action-one\" />
     <Folder Include="wwwroot\assets\action-two\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
 </Project>

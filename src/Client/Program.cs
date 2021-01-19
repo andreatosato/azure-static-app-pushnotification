@@ -19,6 +19,7 @@ namespace Blazoring.PWA.Client
 #else
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri($"{builder.HostEnvironment.BaseAddress}/api/") });
 #endif
+            builder.Services.AddTransient<JSInstanceHelper>();
             await builder.Build().RunAsync();
         }
     }
