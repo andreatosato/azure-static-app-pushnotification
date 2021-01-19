@@ -1,17 +1,38 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<Layout Sider="true">
+    <LayoutSider>
+        <LayoutSiderContent>
+            <NavMenu></NavMenu>
+        </LayoutSiderContent>
+    </LayoutSider>
+    <Layout>
+        <LayoutHeader Fixed="true">
+            <Bar Breakpoint="Breakpoint.Desktop" Background="Background.Primary" ThemeContrast="ThemeContrast.Light">
+                <BarBrand>
+                    <BarItem>
+                        <BarLink Clicked="ToggleSidebar">
+                            Blazoring PWA
+                        </BarLink>
+                    </BarItem>
+                </BarBrand>
+                <BarMenu>
+                    <BarEnd>
+                        <BarItem>
+                            <BarLink To="https://github.com/andreatosato/azure-static-app-pushnotification" Target="Target.Blank">
+                                <i class="fab fa-github text-color-primary"></i>
+                            </BarLink>
+                        </BarItem>
+                    </BarEnd>
+                </BarMenu>
+            </Bar>
+        </LayoutHeader>
+        <LayoutContent>
+            <Container Fluid="true">
+                @*<AutoBreadcrum></AutoBreadcrum>*@
+                @Body
+            </Container>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
-
-        <div class="content px-4">
-            @Body
-        </div>
-    </div>
-</div>
+        </LayoutContent>
+    </Layout>
+</Layout>
