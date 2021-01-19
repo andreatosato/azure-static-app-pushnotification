@@ -4,18 +4,3 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
-
-<Blazorise.Button Clicked="@(async () => await GoToJS())">JS Interop</Blazorise.Button>
-
-@code {
-
-    [Inject]
-    public JSInstanceHelper Helper { get; set; }
-
-    public async Task GoToJS()
-    {
-        var helperRef = DotNetObjectReference.Create<JSInstanceHelper>(Helper);
-        await JSRuntime.InvokeVoidAsync("interopInstance", helperRef);
-        helperRef?.Dispose();
-    }
-}

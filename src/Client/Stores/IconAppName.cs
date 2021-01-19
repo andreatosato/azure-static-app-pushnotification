@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Blazoring.PWA.Client.Stores
+﻿namespace Blazoring.PWA.Client.Stores
 {
-	public class IconAppName
+    public class IconAppName
 	{
 		public const string Save = "save";
 		public const string Event = "event";
