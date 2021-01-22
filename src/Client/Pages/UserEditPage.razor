@@ -1,9 +1,30 @@
 ﻿@page "/users/edit/{Id:int}"
 @page "/users/create"
+@using PWA.Shared.Models
 
-<h3>UserEditPage</h3>
+<Heading Size="HeadingSize.Is3">User Edit</Heading>
+
+<UserEdit EditMode="Id.HasValue" CurrentUser="_currentUser" Countries="countries"></UserEdit>
 
 @code {
     [Parameter]
     public int? Id { get; set; }
+    private User _currentUser = new User(new Random().Next(int.MinValue, int.MaxValue));
+    private IList<Country> countries;
+
+    [Inject]
+    public IUserService UserService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        countries = await UserService.GetCountriesAsync().ConfigureAwait(false);
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        if (Id.HasValue)
+            _currentUser = await UserService.GetUserByIdAsync(Id.Value);
+    }
 }
