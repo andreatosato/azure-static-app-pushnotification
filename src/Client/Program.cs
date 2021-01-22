@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Blazorise;
 using Blazorise.Icons.Material;
 using Blazorise.Material;
+using Blazoring.PWA.Client.Services;
+using Blazor.IndexedDB.Framework;
 
 namespace Blazoring.PWA.Client
 {
@@ -27,7 +29,10 @@ namespace Blazoring.PWA.Client
 #else
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri($"{builder.HostEnvironment.BaseAddress}/api/") });
 #endif
+            builder.Services.AddTransient<IUserService, UserService>();
+            builder.Services.AddScoped<IIndexedDbFactory, IndexedDbFactory>();
             builder.Services.AddTransient<JSInstanceHelper>();
+
             var host = builder.Build();
             host.Services
                 .UseMaterialProviders()
