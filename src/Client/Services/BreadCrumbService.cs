@@ -9,6 +9,7 @@
 		public static string UserCreate() => $"/{BreadCrum.UserCreate}";
 
 		public static string UsersGrid() => $"/{BreadCrum.UsersGrid}";
+		public static string UsersGridEdit(int id) => $"/{BreadCrum.UserGridEdit}/{id}";
 		public static string Notifications() => $"/{BreadCrum.Notifications}";
 	}
 
@@ -19,6 +20,7 @@
 		public const string UserEdit = "users/edit";
 		public const string UserCreate = "users/create";
 		public const string UsersGrid = "usersgrid";
+		public const string UserGridEdit = "usersgrid/edit";
 		public const string Notifications = "notifications";
 	}
 

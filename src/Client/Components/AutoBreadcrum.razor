@@ -45,6 +45,10 @@
             case BreadCrum.UsersGrid:
                 Links.Add(new BreadCrumLink(BreadCrum.UsersGrid, "Users Grid", true));
                 break;
+            case string link when link.Contains(BreadCrum.UserGridEdit):
+                Links.Add(new BreadCrumLink(BreadCrum.UsersGrid, "Users Grid"));
+                Links.Add(new BreadCrumLink(BreadCrum.UserEdit, "Edit", true));
+                break;
             case BreadCrum.Notifications:
                 Links.Add(new BreadCrumLink(BreadCrum.Notifications, "Notifiche", true));
                 break;
