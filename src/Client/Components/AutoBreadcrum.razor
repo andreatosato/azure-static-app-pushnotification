@@ -1,0 +1,56 @@
+﻿<Breadcrumb Mode="BreadcrumbMode.Auto">
+    @foreach (var item in Links)
+    {
+        <BreadcrumbItem Active="@(item.Active)"><BreadcrumbLink To="@(item.Link)">@item.Description</BreadcrumbLink></BreadcrumbItem>
+    }
+</Breadcrumb>
+
+@code {
+    [Inject]
+    NavigationManager nav { get; set; }
+
+    List<BreadCrumLink> Links = new List<BreadCrumLink>();
+
+    protected override void OnInitialized()
+    {
+        nav.LocationChanged += LocaltionChanged;
+        SetBreadCrumb("");
+        base.OnInitialized();
+    }
+
+    void LocaltionChanged(object sender, LocationChangedEventArgs locArg)
+    {
+        string baseUri = ((NavigationManager)sender).BaseUri;
+        string navigationStart = locArg.Location.Replace(baseUri, "");
+        SetBreadCrumb(navigationStart);
+        this.StateHasChanged();
+    }
+
+    void SetBreadCrumb(string location)
+    {
+        Links.Clear();
+        switch (location.ToLowerInvariant())
+        {
+            case BreadCrum.UsersList:
+                Links.Add(new BreadCrumLink(BreadCrum.UsersList, "Users", true));
+                break;
+            case string link when link.Contains(BreadCrum.UserEdit):
+                Links.Add(new BreadCrumLink(BreadCrum.UsersList, "Users"));
+                Links.Add(new BreadCrumLink(BreadCrum.UserEdit, "Edit", true));
+                break;
+            case string link when link.Contains(BreadCrum.UserCreate):
+                Links.Add(new BreadCrumLink(BreadCrum.UsersList, "Users"));
+                Links.Add(new BreadCrumLink(BreadCrum.UserEdit, "Create", true));
+                break;
+            case BreadCrum.UsersGrid:
+                Links.Add(new BreadCrumLink(BreadCrum.UsersGrid, "Users Grid", true));
+                break;
+            case BreadCrum.Notifications:
+                Links.Add(new BreadCrumLink(BreadCrum.Notifications, "Notifiche", true));
+                break;
+            default:
+                Links.Add(new BreadCrumLink(BreadCrum.Home, "Home"));
+                break;
+        }
+    }
+}
